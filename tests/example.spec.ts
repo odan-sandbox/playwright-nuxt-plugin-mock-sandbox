@@ -2,7 +2,12 @@ import { test, expect } from '@playwright/test'
 
 test('basic test', async ({ page }) => {
   await page.goto('http://localhost:3000/')
-  const title = page.locator('[data-testid="title"]')
-  console.log(title)
-  await expect(title).toHaveText('Welcome to your Nuxt Application')
+  const text1 = page.locator('[data-testid="text"]')
+  await expect(text1).toHaveText('init')
+
+  const button = page.locator('[data-testid="button"]')
+  await button.click()
+
+  const text2 = page.locator('[data-testid="text"]')
+  await expect(text2).toHaveText('hello')
 })
